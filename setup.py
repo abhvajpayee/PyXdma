@@ -1,23 +1,23 @@
-#from distutils.core import setup
 from Cython.Build import cythonize
-#from distutils.extension import Extension
 from distutils.core import setup, Extension
 import numpy
 
-C_module = Extension('PyXdma.libxdma',
-                     sources = ['PyXdma/libxdma.c'],
-                     libraries=["pthread"],
-		     include_dirs=[ 'PyXdma/include' ],)
+#C_module = Extension('PyXdma.libcxdma',
+#                     sources = ['PyXdma/cxdma.c'],
+#                     libraries=["pthread"],
+#                     include_dirs=[ 'PyXdma/include' ],
+#                     library_dirs = ['PyXdma'],
+#                    )
 
-cython_modules = cythonize([Extension("PyXdma.pci", ["PyXdma/pci.pyx"],
-                                      libraries=["libxdma"],
+cython_modules = cythonize([Extension("PyXdma.xdma", ["PyXdma/xdma.pyx"],
+                                      #libraries=["cxdma.cpython-37m-x86_64-linux-gnu"],
                                       include_dirs=[ 'PyXdma', numpy.get_include() ],
                                       library_dirs=[ 'PyXdma' ],
                                      ),
                            ])
 
-modules = [C_module, cython_modules[0]]
-#cython_modules.append(C_module)
+#modules = [C_module, cython_modules[0]]
+modules = [cython_modules[0]]
 
 setup(name='PyXdma',
       version='0.1.0',
