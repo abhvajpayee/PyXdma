@@ -1,0 +1,13 @@
+Metadata-Version: 1.0
+Name: PyXdma
+Version: 0.1.0
+Summary: python binding for Xilinx Xdma library.
+Home-page:  
+Author: Abhishek Bajpai
+Author-email: abhvajpayee@gmail.com
+License: LICENSE.txt
+Description: ===========
+        PyXdma
+        ===========
+        
+        PyXdma is a python binding for Xilinx Xdma library.

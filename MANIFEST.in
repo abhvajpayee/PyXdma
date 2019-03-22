@@ -1,0 +1,3 @@
+include *.txt *.in
+recursive-include docs *.txt *.in *.ipynb
+recursive-include PyPci *.pyx *.h *.pxd *.so
