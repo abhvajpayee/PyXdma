@@ -3,6 +3,7 @@
 
 cimport cxdma
 from libc.stdlib cimport malloc, free
+from libc.stdint cimport uint32_t, int64_t
 
 def greeting():
     return 'hello World'
@@ -24,15 +25,20 @@ cdef class Pci:
     cdef unsigned long _base;
     def __init__(self, char* device):
         self._fd = cxdma.openDev(device)
-        if self._fd != 0:
-            self._base = <unsigned long> cxdma.getBase(self._fd)
-        print(self._fd, hex(self._base))
+        print(self._fd)
     
     def close(self):
         cxdma.closeDev(self._fd)
         return 0
     
     def getBase(self):
-        self._base = <unsigned long> cxdma.getBase(self._fd)
-        return 0
+        if self._fd != 0:
+            self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)
+        return self._base
+    
+    def read(self, unsigned long virtualAddress):
+        cdef uint32_t result;
+        if self._fd != 0:
+            result = cxdma.readDev(<void *> virtualAddress, result)
+        return result
     

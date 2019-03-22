@@ -12,5 +12,5 @@ typedef struct {
 int devinfo(DEVICE *device);
 int openDev(char *device);
 int closeDev(int fd);
-void* getBase(int fd);
-uint32_t read(void* virt_addr);
+void* getBase(int fd, void* map_base);
+uint32_t readDev(void* virt_addr, uint32_t read_result);

@@ -1,3 +1,5 @@
+from libc.stdint cimport uint32_t, int64_t;
+
 cdef extern from "cxdma.h":
     ctypedef struct DEVICE:
         char *path;
@@ -8,5 +10,5 @@ cdef extern from "cxdma.h":
     int devinfo(DEVICE *device);
     int openDev(char *device);
     int closeDev(int fd);
-    void* getBase(int fd);
-    uint32_t read(void* virt_addr);
+    void* getBase(int fd, void* map_base);
+    uint32_t readDev(void* virt_addr, uint32_t read_result);

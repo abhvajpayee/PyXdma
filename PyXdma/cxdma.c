@@ -67,6 +67,7 @@ int devinfo(DEVICE *device) //char *device, unsigned int address, void *map_base
     /* swap 32-bit endianess if host is not little-endian */
     read_result = ltohl(read_result);
     
+	printf("Memory mapped at address %p.\n", device->virt_addr);
     printf("%p \n", read_result);
     printf("%p \n", (read_result >> 20) & 0xFFF);
     printf("%p \n", (read_result >> 12) & 0xFF);
@@ -86,13 +87,13 @@ int closeDev(int fd){
 	return 0;
 }
 
-void* getBase(int fd){
-    return mmap(0, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+void* getBase(int fd, void* map_base){
+    map_base = mmap(0, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    return map_base;
 }
 
-uint32_t read(void* virt_addr){
-    uint32_t read_result;
-    read_result = *((uint32_t *) device->virt_addr);
+uint32_t readDev(void* virt_addr, uint32_t read_result){
+    read_result = *((uint32_t *) virt_addr);
     /* swap 32-bit endianess if host is not little-endian */
     read_result = ltohl(read_result);    
     return read_result;

@@ -613,6 +613,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #define __PYX_HAVE__PyXdma__xdma
 #define __PYX_HAVE_API__PyXdma__xdma
 /* Early includes */
+#include <stdint.h>
 #include "cxdma.h"
 #include <string.h>
 #include <stdlib.h>
@@ -831,7 +832,7 @@ static const char *__pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_6PyXdma_4xdma_Pci;
 
-/* "PyXdma/xdma.pyx":22
+/* "PyXdma/xdma.pyx":23
  * 
  * 
  * cdef class Pci:             # <<<<<<<<<<<<<<
@@ -1167,6 +1168,9 @@ static PyObject* __pyx_print_kwargs = 0;
 #endif
 
 /* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint32_t(uint32_t value);
+
+/* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntFromPy.proto */
@@ -1200,6 +1204,8 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
+
+/* Module declarations from 'libc.stdint' */
 
 /* Module declarations from 'PyXdma.cxdma' */
 
@@ -1301,8 +1307,10 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_greeting(CYTHON_UNUSED PyObject *__pyx_s
 static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static int __pyx_pf_6PyXdma_4xdma_3Pci___init__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, char *__pyx_v_device); /* proto */
 static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_2close(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_4__reduce_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_6__setstate_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_4getBase(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_6read(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, unsigned long __pyx_v_virtualAddress); /* proto */
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_8__reduce_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_10__setstate_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_6PyXdma_4xdma_4__pyx_unpickle_Pci(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_6PyXdma_4xdma_Pci(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
@@ -1314,8 +1322,8 @@ static PyObject *__pyx_codeobj__3;
 static PyObject *__pyx_codeobj__5;
 /* Late includes */
 
-/* "PyXdma/xdma.pyx":7
- * from libc.stdlib cimport malloc, free
+/* "PyXdma/xdma.pyx":8
+ * from libc.stdint cimport uint32_t, int64_t
  * 
  * def greeting():             # <<<<<<<<<<<<<<
  *     return 'hello World'
@@ -1341,7 +1349,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_greeting(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("greeting", 0);
 
-  /* "PyXdma/xdma.pyx":8
+  /* "PyXdma/xdma.pyx":9
  * 
  * def greeting():
  *     return 'hello World'             # <<<<<<<<<<<<<<
@@ -1353,8 +1361,8 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_greeting(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_r = __pyx_kp_s_hello_World;
   goto __pyx_L0;
 
-  /* "PyXdma/xdma.pyx":7
- * from libc.stdlib cimport malloc, free
+  /* "PyXdma/xdma.pyx":8
+ * from libc.stdint cimport uint32_t, int64_t
  * 
  * def greeting():             # <<<<<<<<<<<<<<
  *     return 'hello World'
@@ -1368,7 +1376,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_greeting(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "PyXdma/xdma.pyx":10
+/* "PyXdma/xdma.pyx":11
  *     return 'hello World'
  * 
  * def devinfo():             # <<<<<<<<<<<<<<
@@ -1400,7 +1408,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("devinfo", 0);
 
-  /* "PyXdma/xdma.pyx":12
+  /* "PyXdma/xdma.pyx":13
  * def devinfo():
  *     cdef cxdma.DEVICE* _c_device
  *     _c_device = <cxdma.DEVICE *> malloc(sizeof(cxdma.DEVICE))             # <<<<<<<<<<<<<<
@@ -1409,7 +1417,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v__c_device = ((DEVICE *)malloc((sizeof(DEVICE))));
 
-  /* "PyXdma/xdma.pyx":13
+  /* "PyXdma/xdma.pyx":14
  *     cdef cxdma.DEVICE* _c_device
  *     _c_device = <cxdma.DEVICE *> malloc(sizeof(cxdma.DEVICE))
  *     _c_device.path = "/dev/xdma0_control"             # <<<<<<<<<<<<<<
@@ -1418,7 +1426,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v__c_device->path = ((char *)"/dev/xdma0_control");
 
-  /* "PyXdma/xdma.pyx":14
+  /* "PyXdma/xdma.pyx":15
  *     _c_device = <cxdma.DEVICE *> malloc(sizeof(cxdma.DEVICE))
  *     _c_device.path = "/dev/xdma0_control"
  *     for i in range(4):             # <<<<<<<<<<<<<<
@@ -1428,7 +1436,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
   for (__pyx_t_1 = 0; __pyx_t_1 < 4; __pyx_t_1+=1) {
     __pyx_v_i = __pyx_t_1;
 
-    /* "PyXdma/xdma.pyx":15
+    /* "PyXdma/xdma.pyx":16
  *     _c_device.path = "/dev/xdma0_control"
  *     for i in range(4):
  *         _c_device.address = 0             # <<<<<<<<<<<<<<
@@ -1437,7 +1445,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
  */
     __pyx_v__c_device->address = 0;
 
-    /* "PyXdma/xdma.pyx":16
+    /* "PyXdma/xdma.pyx":17
  *     for i in range(4):
  *         _c_device.address = 0
  *         cxdma.devinfo(_c_device)             # <<<<<<<<<<<<<<
@@ -1446,19 +1454,19 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
  */
     (void)(devinfo(__pyx_v__c_device));
 
-    /* "PyXdma/xdma.pyx":17
+    /* "PyXdma/xdma.pyx":18
  *         _c_device.address = 0
  *         cxdma.devinfo(_c_device)
  *         print('map_base : ', hex(<unsigned long> _c_device.map_base))             # <<<<<<<<<<<<<<
  *         print('virt_addr : ', hex(<unsigned long> _c_device.virt_addr))
  *     return 0
  */
-    __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(((unsigned long)__pyx_v__c_device->map_base)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(((unsigned long)__pyx_v__c_device->map_base)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_kp_s_map_base);
     __Pyx_GIVEREF(__pyx_kp_s_map_base);
@@ -1466,22 +1474,22 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
     __pyx_t_3 = 0;
-    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "PyXdma/xdma.pyx":18
+    /* "PyXdma/xdma.pyx":19
  *         cxdma.devinfo(_c_device)
  *         print('map_base : ', hex(<unsigned long> _c_device.map_base))
  *         print('virt_addr : ', hex(<unsigned long> _c_device.virt_addr))             # <<<<<<<<<<<<<<
  *     return 0
  * 
  */
-    __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(((unsigned long)__pyx_v__c_device->virt_addr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(((unsigned long)__pyx_v__c_device->virt_addr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_kp_s_virt_addr);
     __Pyx_GIVEREF(__pyx_kp_s_virt_addr);
@@ -1489,11 +1497,11 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
     __pyx_t_3 = 0;
-    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "PyXdma/xdma.pyx":19
+  /* "PyXdma/xdma.pyx":20
  *         print('map_base : ', hex(<unsigned long> _c_device.map_base))
  *         print('virt_addr : ', hex(<unsigned long> _c_device.virt_addr))
  *     return 0             # <<<<<<<<<<<<<<
@@ -1505,7 +1513,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_r = __pyx_int_0;
   goto __pyx_L0;
 
-  /* "PyXdma/xdma.pyx":10
+  /* "PyXdma/xdma.pyx":11
  *     return 'hello World'
  * 
  * def devinfo():             # <<<<<<<<<<<<<<
@@ -1525,12 +1533,12 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_2devinfo(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "PyXdma/xdma.pyx":25
+/* "PyXdma/xdma.pyx":26
  *     cdef int _fd;
  *     cdef unsigned long _base;
  *     def __init__(self, char* device):             # <<<<<<<<<<<<<<
  *         self._fd = cxdma.openDev(device)
- *         if self._fd != 0:
+ *         print(self._fd)
  */
 
 /* Python wrapper */
@@ -1559,18 +1567,18 @@ static int __pyx_pw_6PyXdma_4xdma_3Pci_1__init__(PyObject *__pyx_v_self, PyObjec
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 26, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
     }
-    __pyx_v_device = __Pyx_PyObject_AsWritableString(values[0]); if (unlikely((!__pyx_v_device) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_device = __Pyx_PyObject_AsWritableString(values[0]); if (unlikely((!__pyx_v_device) && PyErr_Occurred())) __PYX_ERR(0, 26, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 26, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("PyXdma.xdma.Pci.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1586,89 +1594,43 @@ static int __pyx_pw_6PyXdma_4xdma_3Pci_1__init__(PyObject *__pyx_v_self, PyObjec
 static int __pyx_pf_6PyXdma_4xdma_3Pci___init__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, char *__pyx_v_device) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "PyXdma/xdma.pyx":26
+  /* "PyXdma/xdma.pyx":27
  *     cdef unsigned long _base;
  *     def __init__(self, char* device):
  *         self._fd = cxdma.openDev(device)             # <<<<<<<<<<<<<<
- *         if self._fd != 0:
- *             self._base = <unsigned long> cxdma.getBase(self._fd)
+ *         print(self._fd)
+ * 
  */
   __pyx_v_self->_fd = openDev(__pyx_v_device);
 
-  /* "PyXdma/xdma.pyx":27
+  /* "PyXdma/xdma.pyx":28
  *     def __init__(self, char* device):
  *         self._fd = cxdma.openDev(device)
- *         if self._fd != 0:             # <<<<<<<<<<<<<<
- *             self._base = <unsigned long> cxdma.getBase(self._fd)
- *         print(self._fd, hex(self._base))
- */
-  __pyx_t_1 = ((__pyx_v_self->_fd != 0) != 0);
-  if (__pyx_t_1) {
-
-    /* "PyXdma/xdma.pyx":28
- *         self._fd = cxdma.openDev(device)
- *         if self._fd != 0:
- *             self._base = <unsigned long> cxdma.getBase(self._fd)             # <<<<<<<<<<<<<<
- *         print(self._fd, hex(self._base))
- * 
- */
-    __pyx_v_self->_base = ((unsigned long)getBase(__pyx_v_self->_fd));
-
-    /* "PyXdma/xdma.pyx":27
- *     def __init__(self, char* device):
- *         self._fd = cxdma.openDev(device)
- *         if self._fd != 0:             # <<<<<<<<<<<<<<
- *             self._base = <unsigned long> cxdma.getBase(self._fd)
- *         print(self._fd, hex(self._base))
- */
-  }
-
-  /* "PyXdma/xdma.pyx":29
- *         if self._fd != 0:
- *             self._base = <unsigned long> cxdma.getBase(self._fd)
- *         print(self._fd, hex(self._base))             # <<<<<<<<<<<<<<
+ *         print(self._fd)             # <<<<<<<<<<<<<<
  * 
  *     def close(self):
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->_fd); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->_base); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_hex, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_4);
-  __pyx_t_2 = 0;
-  __pyx_t_4 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_fd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "PyXdma/xdma.pyx":25
+  /* "PyXdma/xdma.pyx":26
  *     cdef int _fd;
  *     cdef unsigned long _base;
  *     def __init__(self, char* device):             # <<<<<<<<<<<<<<
  *         self._fd = cxdma.openDev(device)
- *         if self._fd != 0:
+ *         print(self._fd)
  */
 
   /* function exit code */
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("PyXdma.xdma.Pci.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
@@ -1676,8 +1638,8 @@ static int __pyx_pf_6PyXdma_4xdma_3Pci___init__(struct __pyx_obj_6PyXdma_4xdma_P
   return __pyx_r;
 }
 
-/* "PyXdma/xdma.pyx":31
- *         print(self._fd, hex(self._base))
+/* "PyXdma/xdma.pyx":30
+ *         print(self._fd)
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
  *         cxdma.closeDev(self._fd)
@@ -1702,7 +1664,7 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_2close(struct __pyx_obj_6PyXdma_4xd
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("close", 0);
 
-  /* "PyXdma/xdma.pyx":32
+  /* "PyXdma/xdma.pyx":31
  * 
  *     def close(self):
  *         cxdma.closeDev(self._fd)             # <<<<<<<<<<<<<<
@@ -1711,19 +1673,20 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_2close(struct __pyx_obj_6PyXdma_4xd
  */
   (void)(closeDev(__pyx_v_self->_fd));
 
-  /* "PyXdma/xdma.pyx":33
+  /* "PyXdma/xdma.pyx":32
  *     def close(self):
  *         cxdma.closeDev(self._fd)
  *         return 0             # <<<<<<<<<<<<<<
  * 
+ *     def getBase(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_int_0);
   __pyx_r = __pyx_int_0;
   goto __pyx_L0;
 
-  /* "PyXdma/xdma.pyx":31
- *         print(self._fd, hex(self._base))
+  /* "PyXdma/xdma.pyx":30
+ *         print(self._fd)
  * 
  *     def close(self):             # <<<<<<<<<<<<<<
  *         cxdma.closeDev(self._fd)
@@ -1737,6 +1700,194 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_2close(struct __pyx_obj_6PyXdma_4xd
   return __pyx_r;
 }
 
+/* "PyXdma/xdma.pyx":34
+ *         return 0
+ * 
+ *     def getBase(self):             # <<<<<<<<<<<<<<
+ *         if self._fd != 0:
+ *             self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_5getBase(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_5getBase(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("getBase (wrapper)", 0);
+  __pyx_r = __pyx_pf_6PyXdma_4xdma_3Pci_4getBase(((struct __pyx_obj_6PyXdma_4xdma_Pci *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_4getBase(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  __Pyx_RefNannySetupContext("getBase", 0);
+
+  /* "PyXdma/xdma.pyx":35
+ * 
+ *     def getBase(self):
+ *         if self._fd != 0:             # <<<<<<<<<<<<<<
+ *             self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)
+ *         return self._base
+ */
+  __pyx_t_1 = ((__pyx_v_self->_fd != 0) != 0);
+  if (__pyx_t_1) {
+
+    /* "PyXdma/xdma.pyx":36
+ *     def getBase(self):
+ *         if self._fd != 0:
+ *             self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)             # <<<<<<<<<<<<<<
+ *         return self._base
+ * 
+ */
+    __pyx_v_self->_base = ((unsigned long)getBase(__pyx_v_self->_fd, ((void *)__pyx_v_self->_base)));
+
+    /* "PyXdma/xdma.pyx":35
+ * 
+ *     def getBase(self):
+ *         if self._fd != 0:             # <<<<<<<<<<<<<<
+ *             self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)
+ *         return self._base
+ */
+  }
+
+  /* "PyXdma/xdma.pyx":37
+ *         if self._fd != 0:
+ *             self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)
+ *         return self._base             # <<<<<<<<<<<<<<
+ * 
+ *     def read(self, unsigned long virtualAddress):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_self->_base); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "PyXdma/xdma.pyx":34
+ *         return 0
+ * 
+ *     def getBase(self):             # <<<<<<<<<<<<<<
+ *         if self._fd != 0:
+ *             self._base = <unsigned long> cxdma.getBase(self._fd, <void*> self._base)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("PyXdma.xdma.Pci.getBase", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "PyXdma/xdma.pyx":39
+ *         return self._base
+ * 
+ *     def read(self, unsigned long virtualAddress):             # <<<<<<<<<<<<<<
+ *         cdef uint32_t result;
+ *         if self._fd != 0:
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_7read(PyObject *__pyx_v_self, PyObject *__pyx_arg_virtualAddress); /*proto*/
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_7read(PyObject *__pyx_v_self, PyObject *__pyx_arg_virtualAddress) {
+  unsigned long __pyx_v_virtualAddress;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("read (wrapper)", 0);
+  assert(__pyx_arg_virtualAddress); {
+    __pyx_v_virtualAddress = __Pyx_PyInt_As_unsigned_long(__pyx_arg_virtualAddress); if (unlikely((__pyx_v_virtualAddress == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 39, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("PyXdma.xdma.Pci.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_6PyXdma_4xdma_3Pci_6read(((struct __pyx_obj_6PyXdma_4xdma_Pci *)__pyx_v_self), ((unsigned long)__pyx_v_virtualAddress));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_6read(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, unsigned long __pyx_v_virtualAddress) {
+  uint32_t __pyx_v_result;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  __Pyx_RefNannySetupContext("read", 0);
+
+  /* "PyXdma/xdma.pyx":41
+ *     def read(self, unsigned long virtualAddress):
+ *         cdef uint32_t result;
+ *         if self._fd != 0:             # <<<<<<<<<<<<<<
+ *             result = cxdma.readDev(<void *> virtualAddress, result)
+ *         return result
+ */
+  __pyx_t_1 = ((__pyx_v_self->_fd != 0) != 0);
+  if (__pyx_t_1) {
+
+    /* "PyXdma/xdma.pyx":42
+ *         cdef uint32_t result;
+ *         if self._fd != 0:
+ *             result = cxdma.readDev(<void *> virtualAddress, result)             # <<<<<<<<<<<<<<
+ *         return result
+ * 
+ */
+    __pyx_v_result = readDev(((void *)__pyx_v_virtualAddress), __pyx_v_result);
+
+    /* "PyXdma/xdma.pyx":41
+ *     def read(self, unsigned long virtualAddress):
+ *         cdef uint32_t result;
+ *         if self._fd != 0:             # <<<<<<<<<<<<<<
+ *             result = cxdma.readDev(<void *> virtualAddress, result)
+ *         return result
+ */
+  }
+
+  /* "PyXdma/xdma.pyx":43
+ *         if self._fd != 0:
+ *             result = cxdma.readDev(<void *> virtualAddress, result)
+ *         return result             # <<<<<<<<<<<<<<
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyInt_From_uint32_t(__pyx_v_result); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "PyXdma/xdma.pyx":39
+ *         return self._base
+ * 
+ *     def read(self, unsigned long virtualAddress):             # <<<<<<<<<<<<<<
+ *         cdef uint32_t result;
+ *         if self._fd != 0:
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("PyXdma.xdma.Pci.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef tuple state
@@ -1744,19 +1895,19 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_2close(struct __pyx_obj_6PyXdma_4xd
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_9__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_9__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6PyXdma_4xdma_3Pci_4__reduce_cython__(((struct __pyx_obj_6PyXdma_4xdma_Pci *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6PyXdma_4xdma_3Pci_8__reduce_cython__(((struct __pyx_obj_6PyXdma_4xdma_Pci *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_4__reduce_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self) {
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_8__reduce_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -1982,19 +2133,19 @@ static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_4__reduce_cython__(struct __pyx_obj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_11__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6PyXdma_4xdma_3Pci_11__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6PyXdma_4xdma_3Pci_6__setstate_cython__(((struct __pyx_obj_6PyXdma_4xdma_Pci *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6PyXdma_4xdma_3Pci_10__setstate_cython__(((struct __pyx_obj_6PyXdma_4xdma_Pci *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_6__setstate_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6PyXdma_4xdma_3Pci_10__setstate_cython__(struct __pyx_obj_6PyXdma_4xdma_Pci *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2449,8 +2600,10 @@ static void __pyx_tp_dealloc_6PyXdma_4xdma_Pci(PyObject *o) {
 
 static PyMethodDef __pyx_methods_6PyXdma_4xdma_Pci[] = {
   {"close", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_3close, METH_NOARGS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_5__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_7__setstate_cython__, METH_O, 0},
+  {"getBase", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_5getBase, METH_NOARGS, 0},
+  {"read", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_7read, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_9__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6PyXdma_4xdma_3Pci_11__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -2601,8 +2754,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 14, __pyx_L1_error)
-  __pyx_builtin_hex = __Pyx_GetBuiltinName(__pyx_n_s_hex); if (!__pyx_builtin_hex) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_builtin_hex = __Pyx_GetBuiltinName(__pyx_n_s_hex); if (!__pyx_builtin_hex) __PYX_ERR(0, 18, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2612,26 +2765,26 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "PyXdma/xdma.pyx":7
- * from libc.stdlib cimport malloc, free
+  /* "PyXdma/xdma.pyx":8
+ * from libc.stdint cimport uint32_t, int64_t
  * 
  * def greeting():             # <<<<<<<<<<<<<<
  *     return 'hello World'
  * 
  */
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_PyXdma_xdma_pyx, __pyx_n_s_greeting, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_PyXdma_xdma_pyx, __pyx_n_s_greeting, 8, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 8, __pyx_L1_error)
 
-  /* "PyXdma/xdma.pyx":10
+  /* "PyXdma/xdma.pyx":11
  *     return 'hello World'
  * 
  * def devinfo():             # <<<<<<<<<<<<<<
  *     cdef cxdma.DEVICE* _c_device
  *     _c_device = <cxdma.DEVICE *> malloc(sizeof(cxdma.DEVICE))
  */
-  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_c_device, __pyx_n_s_i); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_n_s_c_device, __pyx_n_s_i); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
-  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_PyXdma_xdma_pyx, __pyx_n_s_devinfo, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_PyXdma_xdma_pyx, __pyx_n_s_devinfo, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 11, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Pci(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -2694,13 +2847,13 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_6PyXdma_4xdma_Pci) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6PyXdma_4xdma_Pci) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_type_6PyXdma_4xdma_Pci.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6PyXdma_4xdma_Pci.tp_dictoffset && __pyx_type_6PyXdma_4xdma_Pci.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6PyXdma_4xdma_Pci.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Pci, (PyObject *)&__pyx_type_6PyXdma_4xdma_Pci) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6PyXdma_4xdma_Pci) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Pci, (PyObject *)&__pyx_type_6PyXdma_4xdma_Pci) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6PyXdma_4xdma_Pci) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_ptype_6PyXdma_4xdma_Pci = &__pyx_type_6PyXdma_4xdma_Pci;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -2931,28 +3084,28 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "PyXdma/xdma.pyx":7
- * from libc.stdlib cimport malloc, free
+  /* "PyXdma/xdma.pyx":8
+ * from libc.stdint cimport uint32_t, int64_t
  * 
  * def greeting():             # <<<<<<<<<<<<<<
  *     return 'hello World'
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6PyXdma_4xdma_1greeting, NULL, __pyx_n_s_PyXdma_xdma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6PyXdma_4xdma_1greeting, NULL, __pyx_n_s_PyXdma_xdma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_greeting, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_greeting, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "PyXdma/xdma.pyx":10
+  /* "PyXdma/xdma.pyx":11
  *     return 'hello World'
  * 
  * def devinfo():             # <<<<<<<<<<<<<<
  *     cdef cxdma.DEVICE* _c_device
  *     _c_device = <cxdma.DEVICE *> malloc(sizeof(cxdma.DEVICE))
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6PyXdma_4xdma_3devinfo, NULL, __pyx_n_s_PyXdma_xdma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6PyXdma_4xdma_3devinfo, NULL, __pyx_n_s_PyXdma_xdma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_devinfo, __pyx_t_1) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_devinfo, __pyx_t_1) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
@@ -4441,6 +4594,37 @@ bad:
     return -1;
 }
 #endif
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint32_t(uint32_t value) {
+    const uint32_t neg_one = (uint32_t) ((uint32_t) 0 - (uint32_t) 1), const_zero = (uint32_t) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(uint32_t) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(uint32_t) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(uint32_t) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(uint32_t) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(uint32_t) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(uint32_t),
+                                     little, !is_unsigned);
+    }
+}
 
 /* CIntToPy */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
