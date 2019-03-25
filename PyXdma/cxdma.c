@@ -54,8 +54,8 @@
  *	actually transferred.  (This is true on both 32-bit and 64-bit
  *	systems.)
  */
-#define RW_MAX_SIZE	1024 
-//#define RW_MAX_SIZE	0x7ffff000
+//#define RW_MAX_SIZE	1024 
+#define RW_MAX_SIZE	0x7ffff000
 
 int devinfo(DEVICE *device) //char *device, unsigned int address, void *map_base, void *virt_addr)
 {
