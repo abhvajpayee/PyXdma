@@ -54,8 +54,8 @@
  *	actually transferred.  (This is true on both 32-bit and 64-bit
  *	systems.)
  */
-//#define RW_MAX_SIZE	512 
-#define RW_MAX_SIZE	0x7ffff000
+#define RW_MAX_SIZE	1024 
+//#define RW_MAX_SIZE	0x7ffff000
 
 int devinfo(DEVICE *device) //char *device, unsigned int address, void *map_base, void *virt_addr)
 {
@@ -149,6 +149,7 @@ uint64_t read_to_buffer(char *fname, int fd, char *buffer, uint64_t size,
 		if (bytes > RW_MAX_SIZE)
 			bytes = RW_MAX_SIZE;
 
+        fprintf(stderr, "%d, read\n", bytes);
 		if (offset) {
 			rc = lseek(fd, offset, SEEK_SET);
 			if (rc != offset) {
@@ -198,6 +199,7 @@ uint64_t write_from_buffer(char *fname, int fd, char *buffer, uint64_t size,
 		if (bytes > RW_MAX_SIZE)
 			bytes = RW_MAX_SIZE;
 
+        fprintf(stderr, "%d, write\n", bytes);
 		if (offset) {
 			rc = lseek(fd, offset, SEEK_SET);
 			if (rc != offset) {

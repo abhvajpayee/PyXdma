@@ -41,8 +41,8 @@ def writeChannelProcess(data):
         writeChannel.close()
         
 if __name__ == "__main__": 
-    data = np.fromfile('data.txt', dtype=np.uint64)
-    data = np.random.randint(2**64, size=int(1024*1024*8/64), dtype=np.uint64)
+    #data = np.fromfile('data.txt', dtype=np.uint64)
+    data = np.random.randint(2**64, size=int(1024*128), dtype=np.uint64)
     print(data)
     
     #writeChannelProcess(data)
