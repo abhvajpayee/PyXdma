@@ -23,26 +23,34 @@ def getConfig(device = b'/dev/xdma0_control'):
     return h2cChannels, c2hChannels
 
 h2cChannels, c2hChannels = getConfig(device = b'/dev/xdma0_control')
-print(h2cChannels, c2hChannels)
+#print(h2cChannels, c2hChannels)
 
 def readChannelProcess(size):
-    readChannelDev = '/dev/xdma0_c2h_{0}'.format(c2hChannels[0]['index']).encode('utf-8')
+    readChannelDev = '/dev/xdma0_c2h_{0}'.format(c2hChannels[1]['index']).encode('utf-8')
+    print(readChannelDev)
     readChannel  = xdma.Channel(readChannelDev)    
     if readChannel.opened():
         data = readChannel.read(size)
+        for i in data:
+            print(hex(i))
         print(data)
         readChannel.close()
 
 def writeChannelProcess(data):
-    writeChannelDev = '/dev/xdma0_h2c_{0}'.format(h2cChannels[0]['index']).encode('utf-8')
+    writeChannelDev = '/dev/xdma0_h2c_{0}'.format(h2cChannels[1]['index']).encode('utf-8')
+    print(writeChannelDev)
     writeChannel = xdma.Channel(writeChannelDev)
     if writeChannel.opened():
         writeChannel.write(data)
         writeChannel.close()
         
 if __name__ == "__main__": 
-    #data = np.fromfile('data.txt', dtype=np.uint64)
-    data = np.random.randint(2**64, size=int(1024*128), dtype=np.uint64)
+    
+    data = np.fromfile('/home/abajpai/devel/linuxDriver/tests/data/shadata.bin', dtype=np.uint64)
+    #print("###############", len(data), len(data)%8)
+    #data = np.append(np.array([0xFFFF]*4, dtype=np.uint64), data) 
+    #data = np.append(data, np.array([0x0]*4, dtype=np.uint64)) 
+    #data = np.random.randint(2**64, size=int(1024*128), dtype=np.uint64)
     print(data)
     
     #writeChannelProcess(data)
