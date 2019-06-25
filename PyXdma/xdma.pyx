@@ -10,9 +10,6 @@ cimport numpy as np
 import cython
 import ctypes
 
-def greeting():
-    return 'hello World'
-
 def devinfo():
     cdef cxdma.DEVICE* _c_device
     _c_device = <cxdma.DEVICE *> malloc(sizeof(cxdma.DEVICE)) 

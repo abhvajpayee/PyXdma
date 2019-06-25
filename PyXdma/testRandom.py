@@ -3,6 +3,15 @@ import numpy as np
 import threading 
 from multiprocessing import Process
 import time
+from shahdl import SHA256Ref
+from random import randrange
+from pyhdllib import AXI4Pkt
+import modregistry
+
+
+DATA  = 64
+WORD = 8
+
 np.set_printoptions(formatter={'int':hex})
 def getConfig(device = b'/dev/xdma0_control'):
     pci = xdma.Pci(device)
@@ -27,13 +36,13 @@ h2cChannels, c2hChannels = getConfig(device = b'/dev/xdma0_control')
 
 def readChannelProcess(channel, size):
     readChannelDev = '/dev/xdma0_c2h_{0}'.format(c2hChannels[channel]['index']).encode('utf-8')
-    #print(readChannelDev)
+    print(readChannelDev)
     readChannel  = xdma.Channel(readChannelDev)    
-    #print("########################@@")
+    print("########################@@")
     if readChannel.opened():
         data = readChannel.read(size)
         readChannel.close()
-        print(data)
+        return data
 
 def writeChannelProcess(channel, data):
     writeChannelDev = '/dev/xdma0_h2c_{0}'.format(h2cChannels[channel]['index']).encode('utf-8')
@@ -44,33 +53,39 @@ def writeChannelProcess(channel, data):
         writeChannel.close()
         
 if __name__ == "__main__": 
-    
-    data = np.fromfile('/home/abajpai/devel/linuxDriver/tests/data/shadata.bin', dtype=np.uint64)
-    #print("###############", len(data), len(data)%8)
-    #data = np.append(np.array([0xFFFF]*4, dtype=np.uint64), data) 
-    #data = np.append(data, np.array([0x0]*4, dtype=np.uint64)) 
-    #data = np.random.randint(2**64, size=int(1024*128), dtype=np.uint64)
-    print(data)
-    
-    #writeChannelProcess(data)
-    #readChannelProcess(len(data)) 
-    # creating thread 
 
-    disableWrite = False
-    for i in range(2):
-        plist = []
-        for j in range(1):
-            p1 = Process(target=readChannelProcess, args=(j, (256+32+4),))
-            if not disableWrite:
-                p2 = Process(target=writeChannelProcess, args=(j, data, ))
-            p1.start() 
-            if not disableWrite:
-                p2.start() 
-            plist.append(p1)
-            if not disableWrite:
-                plist.append(p2)
-      
-        for p in plist:
-            p.join()
-        print("") 
+
+    npData = np.array([], dtype = np.uint64)
+    pktid = randrange(2**16)
+    src = 0x0
+    dest = 1
+
+    packet = AXI4Pkt.addHeader(np.array([32], dtype = np.uint64), src = src, dest = dest, algo = modregistry.RANDOM,
+                               mode = modregistry.GENBITS, pktid = pktid, DATA = 128 + 64)
+    packet = np.append(packet, np.zeros(4, dtype = np.uint64))
+    npData = np.append(npData, packet)
+
+    npData = np.append(npData, AXI4Pkt.addHeader(np.zeros(32, dtype = np.uint64),
+                                                 src = src, dest = dest, algo = modregistry.RANDOM, mode = modregistry.FLUSH,
+                                                 pktid = pktid, DATA = DATA*WORD))
+
+    print(npData)
+    npData = (npData << 32) ^ (npData >> 32)
+    npData = npData.byteswap()
+    print(npData)
+    d = npData.tobytes()
+    for i in d:
+        print(hex(i))
+
+
+    startTime = time.time()
+    #writeChannelProcess(3, npData)
+    #data = readChannelProcess(3, (256+32+4)) 
+    stopTime = time.time()
+    diff = stopTime - startTime
+    print("Time Taken : ", diff, ' sec')
+    #data = data.byteswap()
+    #data = (data << 32) ^ (data >> 32)
+    #print(data)
+    
     print("Done!") 
